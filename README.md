@@ -45,7 +45,7 @@ A modern, mobile-friendly weather dashboard built with **Next.js + Tailwind CSS*
 ## Architecture
 
 ```
-Browser ──▶ client/ (Next.js static site, hosted on Netlify)
+Browser ──▶ client/ (Next.js static site, hosted on Cloudflare Pages)
                │  fetch
                ▼
             server/ (Express API, hosted on Render)  ──▶ WeatherAPI.com (current, hourly, days 1-3, history)
@@ -68,7 +68,7 @@ All keys are read in **one file**, [server/src/config.js](server/src/config.js),
 | `RESEND_API_KEY` | same | optional: enables contact form emails ([free account](https://resend.com)) |
 | `CONTACT_TO_EMAIL` | same | the address that receives contact messages |
 | `ALLOWED_ORIGINS` | same | your front-end URL(s) |
-| `NEXT_PUBLIC_API_URL` | `client/.env.local` locally, Netlify dashboard in production | URL of the server (not a secret) |
+| `NEXT_PUBLIC_API_URL` | `client/.env.local` locally, Cloudflare Pages dashboard in production | URL of the server (not a secret) |
 
 `.env` files are git-ignored, so keys never reach GitHub.
 
@@ -103,15 +103,18 @@ Run the server tests with `cd server && npm test`.
 ### 1. Back-end on Render
 1. Push this repo to GitHub.
 2. On [Render](https://dashboard.render.com): **New → Blueprint**, select the repo. It reads [render.yaml](render.yaml).
-3. Fill in the secrets it asks for: `WEATHER_API_KEY`, optionally `GROQ_API_KEY`, `RESEND_API_KEY` + `CONTACT_TO_EMAIL` (contact emails), and `ALLOWED_ORIGINS` (your Netlify URL once you have it, e.g. `https://my-weather-app.netlify.app`).
+3. Fill in the secrets it asks for: `WEATHER_API_KEY`, optionally `GROQ_API_KEY`, `RESEND_API_KEY` + `CONTACT_TO_EMAIL` (contact emails), and `ALLOWED_ORIGINS` (your Cloudflare Pages URL once you have it, e.g. `https://weather-app.pages.dev`).
 4. Note the service URL, e.g. `https://weather-app-api.onrender.com`, and check that `/api/health` returns `{"ok":true}`.
 
 > Render's free plan sleeps after 15 minutes of inactivity; the first request then takes up to about a minute. The app shows a "waking up the server" banner meanwhile.
 
-### 2. Front-end on Netlify
-1. On [Netlify](https://app.netlify.com): **Add new site → Import an existing project**, select the repo. Settings come from [netlify.toml](netlify.toml) (base `client`, publish `out`).
-2. Under **Site configuration → Environment variables**, add `NEXT_PUBLIC_API_URL` = your Render URL, then redeploy.
-3. Update `ALLOWED_ORIGINS` on Render with the final Netlify URL.
+### 2. Front-end on Cloudflare Pages
+1. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git** → select this repo.
+2. Build settings: framework preset **Next.js (Static HTML Export)**, root directory **`client`**, build command **`npm run build`**, output directory **`out`**.
+3. **Environment variables**: `NEXT_PUBLIC_API_URL` = your Render URL.
+4. Deploy, then put the Pages URL (e.g. `https://weather-app.pages.dev`) in `ALLOWED_ORIGINS` on Render. Preview deployments get their own URL (`https://<hash>.weather-app.pages.dev`) and need to be added too if you want them to reach the API.
+
+`client/public/_headers` sets the same security headers and long-lived cache for `_next/static/*` as before.
 
 ## Contact form emails
 
