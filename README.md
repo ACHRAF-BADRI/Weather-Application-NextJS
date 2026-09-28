@@ -140,6 +140,16 @@ Spam protection: a hidden honeypot field, input validation, and a limit of 5 mes
 
 Next.js 14 (static export) · React 18 · Tailwind CSS · Leaflet / OpenStreetMap · Express 5 · WeatherAPI.com · Open-Meteo · Resend · Groq API (optional)
 
+## License
+
+Weather App is **source available** under the [PolyForm Noncommercial License 1.0.0](LICENSE).
+
+- **Free for noncommercial use:** personal projects, learning, school and university work, research, charities and other noncommercial organizations can read, run, modify and share it.
+- **Not for commercial use:** selling it, offering it as a paid or hosted service, or using it inside a company for business purposes needs a separate commercial license. Contact **ACHRAF EL BADRI** through [github.com/ACHRAF-BADRI](https://github.com/ACHRAF-BADRI).
+- The official hosted version is [achrafweather.pages.dev](https://achrafweather.pages.dev).
+
+Copyright (c) 2026 ACHRAF EL BADRI. Anyone sharing the code must keep the `Required Notice` line at the top of the [LICENSE](LICENSE) file.
+
 ## Credits
 
 Created by **Achraf El Badri**. Weather data by [WeatherAPI.com](https://www.weatherapi.com/) and [Open-Meteo](https://open-meteo.com/) (CC BY 4.0). Map data © OpenStreetMap contributors.

@@ -2,6 +2,7 @@
   "name": "weather-app-client",
   "version": "2.0.0",
   "private": true,
+  "license": "PolyForm-Noncommercial-1.0.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
