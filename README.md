@@ -1,5 +1,15 @@
 # Weather App: live weather + AI predictions (EN/FR)
 
+![Next.js](https://img.shields.io/badge/Next.js-14-000000?logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-18-61dafb?logo=react&logoColor=black)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.4-06b6d4?logo=tailwindcss&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-20%2B-5fa04e?logo=nodedotjs&logoColor=white)
+![Express](https://img.shields.io/badge/Express-5-000000?logo=express&logoColor=white)
+![Leaflet](https://img.shields.io/badge/Leaflet-1.9-199900?logo=leaflet&logoColor=white)
+![Render](https://img.shields.io/badge/API-Render-46e3b7?logo=render&logoColor=white)
+![Cloudflare Pages](https://img.shields.io/badge/Front-Cloudflare%20Pages-f38020?logo=cloudflare&logoColor=white)
+![License](https://img.shields.io/badge/License-PolyForm%20Noncommercial-blue)
+
 A modern, mobile-friendly weather dashboard built with **Next.js + Tailwind CSS**, backed by a small **Node/Express API** that keeps the API keys secret and adds an **AI prediction** of the coming days.
 
 **Live demo:** [achrafweather.pages.dev](https://achrafweather.pages.dev/)
